@@ -1,0 +1,9 @@
+# 보안
+secrets.py
+
+# 자동 생성되는 캐시 파일
+__pycache__/
+*.pyc
+
+# venv
+.venv/
