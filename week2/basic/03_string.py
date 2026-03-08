@@ -36,12 +36,39 @@ def is_palindrome(s):
     """
     # TODO: 알파벳과 숫자만 남기고 소문자로 변환하세요
     # 힌트: isalnum() 메서드와 lower() 메서드 사용
-    pass
+
+    # isalpha() : 문자열이 영어 or 한글로 되어 있으면 true 리턴
+    # isalnum() : 문자열이 영어 or 한글 or 숫자로 되어 있으면 true 리턴
+
+    # 문자열 정제
+    # 공백 제거, 영어 알파벳 소문자(or대문자) 통일, 특수문자 무시
+    # 모든 공백 제거 - replace()사용
+    # 영어소문자로 통일 - lower()사용
+
+    result_str = s.replace(" ","")
+    result_str = result_str.lower()
+
+    result_str = "".join([result_str[i] for i in range(len(result_str)) if result_str[i].isalnum()])
     
     # TODO: 정제된 문자열이 회문인지 확인하세요
     # 방법1: 문자열을 뒤집어서 비교 ([::-1] 사용)
     # 방법2: 양 끝 인덱스를 이용한 투 포인터 방식
-    pass
+    # for x in range(len(result_str)):
+    #   if result_str[x] != result_str[len(result_str)-1-x]:
+    #     return False
+      
+    # 방법 1
+    count = 0
+
+    for x in range(len(result_str)):
+      if result_str[x] != result_str[len(result_str)-1-x]:
+        count +=1
+
+    if count > 0:
+      return False
+    else:
+      return True
+      
     
     #return False
 
