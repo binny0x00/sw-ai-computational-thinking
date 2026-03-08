@@ -7,3 +7,6 @@ __pycache__/
 
 # venv
 .venv/
+
+# review용 폴더
+week2_for_review

@@ -1,3 +1,5 @@
+#link : https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         # 중복된 숫자 제거 (오름차순 정렬 됨, 그자리에서 제거)
