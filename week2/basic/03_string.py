@@ -41,35 +41,24 @@ def is_palindrome(s):
     # isalnum() : 문자열이 영어 or 한글 or 숫자로 되어 있으면 true 리턴
 
     # 문자열 정제
-    # 공백 제거, 영어 알파벳 소문자(or대문자) 통일, 특수문자 무시
-    # 모든 공백 제거 - replace()사용
-    # 영어소문자로 통일 - lower()사용
+    # 1) 문자열에서 영어, 한글, 숫자만 필터링 - .isalnum() 사용
+    # 2) 영어 알파벳 소문자 통일 - .lower() 사용
 
-    result_str = s.replace(" ","")
-    result_str = result_str.lower()
+    s = "".join([x for x in s.lower() if x.isalnum()])
 
-    result_str = "".join([result_str[i] for i in range(len(result_str)) if result_str[i].isalnum()])
+    s = s.lower()
     
     # TODO: 정제된 문자열이 회문인지 확인하세요
     # 방법1: 문자열을 뒤집어서 비교 ([::-1] 사용)
     # 방법2: 양 끝 인덱스를 이용한 투 포인터 방식
-    # for x in range(len(result_str)):
-    #   if result_str[x] != result_str[len(result_str)-1-x]:
-    #     return False
       
-    # 방법 1
-    count = 0
-
-    for x in range(len(result_str)):
-      if result_str[x] != result_str[len(result_str)-1-x]:
-        count +=1
-
-    if count > 0:
-      return False
-    else:
-      return True
+    # 방법 2 - 시간 복잡도 : O(n), 공간 복잡도 : O(n)
+    for x in range(len(s)//2):
+      if s[x] != s[len(s)-1-x]:
+        return False
       
-    
+    return True
+
     #return False
 
 # 테스트 케이스
