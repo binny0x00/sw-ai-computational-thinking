@@ -31,6 +31,14 @@
 - 새로운 배열을 만들어 값을 채워넣으세요
 """
 
+"""
+N x N 배열에서
+i행 -> N-1-i열
+j열 -> j행
+
+(i,j) -> (j, N-1-i)
+"""
+
 def rotate_matrix_90(matrix):
     """
     2차원 배열을 시계방향으로 90도 회전
@@ -44,17 +52,28 @@ def rotate_matrix_90(matrix):
     n = len(matrix)
     
     # TODO: n x n 크기의 새로운 배열을 생성하세요 (0으로 초기화)
-    rotated = []
-    for x in range(n):
-        rotated.append([])
-        for y in range(n):
-            rotated[x].append(0)
+    # rotated = []
+    # for x in range(n):
+    #     rotated.append([])
+    #     for y in range(n):
+    #         rotated[x].append(0)
+
+    rotated = [[0 for y in range(n)] for x in range(n)]
         
     # TODO: 원본 배열의 각 요소를 회전된 위치에 배치하세요
     # 힌트: (i, j) 위치의 요소는 회전 후 (j, n-1-i) 위치로 이동
-    for i in range(n):
-        for j in range(n):
-            rotated[j][n-1-i] = matrix[i][j]
+
+    # (i,j) -> (j, N-1-i)
+    # for i in range(n):
+    #     for j in range(n):
+    #         rotated[j][n-1-i] = matrix[i][j]
+
+    # 행
+    # 열
+
+    # 제일 바깥은 행을 만드는 코드, 안쪽은 열을 만드는 코드
+    # rotated[row][col] = matrix[n-1-col][row]
+    rotated = [[matrix[n-1-j][i] for j in range(n)] for i in range(n)]
     
     return rotated
 
