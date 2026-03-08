@@ -2,38 +2,25 @@
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        left = 0
-        right = 1
+        current = 1
+        input_index = 1
 
-        while right < len(nums) and left < right:
-            if nums[left] == nums[right]:
-                nums.pop(nums[right])
-                continue
-            else:
-                left +=1
-                right +=1
+        for current in range(1, len(nums)): # 빈 배열, 길이 1 배열도 안전하게 처리 됨
+            if nums[current] != nums[input_index-1]:
+                nums[input_index] = nums[current]
+                input_index +=1
 
-        k = len(nums)
+        k = input_index
 
         return k
-        
 
 """
-nums: 내림차순 정렬된 정수 배열
-중복을 제거하되 원본 배열을 변경하지 않아야 함
+nums: 오름차순 정렬된 정수 배열
+원본 배열 내부에서 중복 원소를 제거해야함
 
 k: 중복 제거 후 고유 요소 개수
 """
-        
 
-# Case 1
-# Input
-# nums = [1,1,2]
-# Output
-# [1,2]
-
-# Case 2
-# Input
-# nums = [0,0,1,1,1,2,2,3,3,4]
-# Output
-# [0,1,1,2,3,4]
+"""
+이 문제의 핵심은 유니크한 값을 앞쪽에 모으는 것
+"""
