@@ -44,22 +44,65 @@ def is_palindrome(s):
     # 1) 문자열에서 영어, 한글, 숫자만 필터링 - .isalnum() 사용
     # 2) 영어 알파벳 소문자 통일 - .lower() 사용
 
-    s = "".join([x for x in s.lower() if x.isalnum()])
-
-    s = s.lower()
+    # s = "".join([x for x in s.lower() if x.isalnum()])
+    # 대신에 제너레이터를 사용해 하나씩 만들어서 join하는 방법 있음
+    # 제너레이터 : 한 번에 하나씩 구성요성를 반환해주는 이터러블을 생성해주는 객체
+    # 이터러블 : 순회할 수 있는 객체
+    # s = "".join(x.lower() for x in s if x.isalnum())
     
     # TODO: 정제된 문자열이 회문인지 확인하세요
     # 방법1: 문자열을 뒤집어서 비교 ([::-1] 사용)
     # 방법2: 양 끝 인덱스를 이용한 투 포인터 방식
-      
-    # 방법 2 - 시간 복잡도 : O(n), 공간 복잡도 : O(n)
-    for x in range(len(s)//2):
-      if s[x] != s[len(s)-1-x]:
-        return False
-      
-    return True
 
-    #return False
+    # 필수 조건
+    # 모두 소문자로 만들것
+    # 알파벳, 숫자만 비교할 것
+    # 회문인지 여부를 반환할 것
+
+    # 문자열 정제 후 뒤집기 비교
+    # 문자열 정제 후 투포인터
+    # 정제 없이 투포인터
+      
+    # # 방법 2(1) 문자열 정제 후 투포인터 - 시간 복잡도 : O(n), 공간 복잡도 : O(n) - 파이썬 문자열은 불변
+    # s = "".join(x.lower() for x in s if x.isalnum())
+
+    # for x in range(len(s)//2):
+    #   if s[x] != s[len(s)-1-x]:
+    #     return False
+      
+    # return True
+
+    # 방법 2(2) 문자열 정제 없이 투포인터 - 시간 복잡도 : O(n), 공간 복잡도 : O(1)
+    """
+    투 포인터
+
+    left = 0
+    right = len(s) - 1
+
+    반복 조건 : while left < right:
+
+    비교할 값이 알파벳/숫자가 아니라면 한칸 이동
+    비교할 값이 알파벳/숫자라면 lower()로 비교
+
+    끝까지 통과하면 True
+
+    """
+
+    left = 0
+    right = len(s)-1
+
+    while left < right:
+        if not (s[left].isalnum()):
+            left += 1
+            continue
+        if not (s[right].isalnum()):
+            right -= 1
+            continue
+        if s[left].lower() != s[right].lower():
+            return False
+        left +=1
+        right -=1
+    return True
 
 # 테스트 케이스
 if __name__ == "__main__":
