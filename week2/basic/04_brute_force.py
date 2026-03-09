@@ -51,13 +51,17 @@ def find_two_sum_pairs(nums, target):
     ## 내부 반복문: j는 i+1부터 n까지 (중복 방지)
     ## nums[i] + nums[j]가 target과 같으면 (i, j)를 결과에 추가
     for i in range(n-1):
-        target_num = target - nums[i]
         for j in range(i+1, n):
-            if nums[j] == target_num:
+            if nums[i] + nums[j] == target:
                 pairs.append((i,j))
 
     
     return pairs
+
+"""
+첫번째 풀이도 논리적으로 맞는 풀이이고 효율도 동일하지만,
+완전 탐색 학습 목적상 nums[i] + nums[j] == target 형태가 더 문제 의도에 잘 맞는다.
+"""
 
 # 테스트 케이스
 if __name__ == "__main__":
