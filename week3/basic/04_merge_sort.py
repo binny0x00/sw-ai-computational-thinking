@@ -41,33 +41,29 @@ def merge(arr, left, mid, right):
     j = 0   # temp_right 인덱스
     k = left   # 원본 배열에서 값을 써 넣을 위치
     
-    while i<len(temp_left) and j<len(temp_right):
+    while i < len(temp_left) and j < len(temp_right):
         if temp_left[i] > temp_right[j]:
             arr[k] = temp_right[j]
             j += 1
-            k += 1
-        elif temp_left[i] < temp_right[j]:
-            arr[k] = temp_left[i]
-            i += 1
-            k += 1
         else:
             arr[k] = temp_left[i]
             i += 1
-            k += 1
+        k += 1
     
     # TODO: left_arr와 right_arr를 비교하며 작은 값을 arr에 복사
     
     # TODO: 남은 원소들을 복사
     # left_arr에 남은 원소가 있으면 복사
     # right_arr에 남은 원소가 있으면 복사
-    if len(temp_left)>0:
-        for n in range(len(temp_left[i:])):
-            arr[k] = temp_left[i+n]
-            k +=1
-    if len(temp_right)>0:
-        for m in range(len(temp_right[j:])):
-            arr[k] = temp_right[j+m]
-            k +=1
+    while i < len(temp_left):
+        arr[k] = temp_left[i]
+        i += 1
+        k += 1
+
+    while j < len(temp_right):
+        arr[k] = temp_right[j]
+        j += 1
+        k += 1
 
 def merge_sort_helper(arr, left, right):
     """
