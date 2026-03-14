@@ -16,7 +16,7 @@ class LinkedList:
         if not current:
             self.head = temp_node
         else:
-            while current:
+            while current: 
                 current = current.next
             current = temp_node
 
@@ -27,7 +27,7 @@ class Solution:
         l2_stack = []
         
         # stack에 node.data 넣기
-        l1_current = l1.head
+        l1_current = l1.head()
         while l1:
             l1_stack.append(l1_current)
             l1_current = l1_current.next

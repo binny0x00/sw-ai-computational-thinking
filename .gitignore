@@ -10,3 +10,5 @@ __pycache__/
 
 # review용 폴더
 week2_for_review
+
+.vscode/
