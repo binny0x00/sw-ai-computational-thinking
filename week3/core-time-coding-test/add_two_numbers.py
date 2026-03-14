@@ -1,55 +1,43 @@
 # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-class LinkedList:
-    def __init__(self, head):
-        self.head = None
-
-    def append(self,data):
-        temp_node = ListNode(data)
-
-        current = self.head
-
-        if not current:
-            self.head = temp_node
-        else:
-            while current: 
-                current = current.next
-            current = temp_node
-
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
-    # def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-    def addTwoNumbers(self, l1: LinkedList[ListNode], l2: LinkedList[ListNode]) -> LinkedList[ListNode]:
-        l1_stack = []
-        l2_stack = []
-        
-        # stack에 node.data 넣기
-        l1_current = l1.head()
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        l1_list = []
         while l1:
-            l1_stack.append(l1_current)
-            l1_current = l1_current.next
+            l1_list.append(l1.val)
+            l1 = l1.next
 
-        l2_current = l2.head()
+        l2_list = []
         while l2:
-            l2_stack.append(l2_current)
-            l2_current = l2_current.next
+            l2_list.append(l2.val)
+            l2 = l2.next
+        
+        l1_num = ""
+        for i in range(len(l1_list)-1,-1,-1):
+            l1_num = l1_num + str(l1_list[i])
 
-        # pop해서 숫자 만들기
-        num1 = ""
-        for i in range(len(l1_stack)):
-            num1 = num1 + l1_stack.pop()
+        l2_num = ""
+        for j in range(len(l2_list)-1,-1,-1):
+            l2_num = l2_num + str(l2_list[j])
 
-        num2 = ""
-        for i in range(len(l2_stack)):
-            num2 = num2 + l2_stack.pop()
+        #print(f"{l1_num} + {l2_num}")
+        result = int(l1_num) + int(l2_num)
 
-        result = str(int(num1) + int(num2))
+        result_str = str(result)
 
-        result_linked_list = LinkedList()
+        head = None
+        current = None
 
-        # print(result)
-        for i in range(len(result),0,-1):
-            result_linked_list.append(i)
+        for i in result_str[::-1]:
+            node = ListNode(int(i))
+
+            if head is None:
+                head = node
+                current = node
+            else:
+                current.next = node
+                current = node
+        return head
