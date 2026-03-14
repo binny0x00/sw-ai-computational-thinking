@@ -44,8 +44,9 @@ def process_print_queue(jobs):
     # TODO: 큐가 비어있지 않은 동안 반복
     ## 큐에서 작업 꺼내기
     ## 작업 처리 (출력 및 리스트에 추가)
-    pass
-    
+    while queue:
+        processed.append(queue.popleft())
+        print(f"처리: {processed[-1]}")
     return processed
 
 # 테스트 케이스
