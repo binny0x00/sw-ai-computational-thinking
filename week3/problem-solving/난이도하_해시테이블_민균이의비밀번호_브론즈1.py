@@ -4,14 +4,12 @@ import sys
 
 n = int(sys.stdin.readline().strip())
 
-input_list = []
+input_list = set()
 
 for i in range(n):
-    input_list.append(sys.stdin.readline().strip())
+    input_list.add(sys.stdin.readline().strip())
 
-for j in range(n):
-    target = input_list[j]
-
+for target in input_list:
     # print(target[::-1])
 
     if target[::-1] in input_list:
