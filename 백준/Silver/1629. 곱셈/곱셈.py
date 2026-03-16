@@ -10,7 +10,7 @@ def calculate_squre(num, num2, num3):
     if num2 % 2 == 0:
         return ((calculate_squre(num, num2//2, num3)) ** 2) % num3
     else:
-        return (num * (calculate_squre(num, (num2-1)//2, num3)) ** 2) % num3
+        return (num * ((calculate_squre(num, (num2-1)//2, num3)) ** 2)) % num3
     
 input_list = sys.stdin.readline().strip().split(" ")
 
