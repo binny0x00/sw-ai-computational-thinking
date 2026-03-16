@@ -15,7 +15,7 @@ def calculate_squre(num, num2, num3):
     else:
         return (num * ((calculate_squre(num, (num2-1)//2, num3)) ** 2)) % num3
     
-input_list = sys.stdin.readline().strip().split(" ")
+a,b,c= map(int, sys.stdin.readline().strip().split(" "))
 
-squred_num = calculate_squre(int(input_list[0]), int(input_list[1]), int(input_list[2]))
+squred_num = calculate_squre(a, b, c)
 print(squred_num)
