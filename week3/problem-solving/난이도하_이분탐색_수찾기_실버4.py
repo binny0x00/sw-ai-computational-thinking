@@ -1,22 +1,35 @@
 # 이분탐색 - 수 찾기 (백준 실버4)
 # 문제 링크: https://www.acmicpc.net/problem/1920
 
-# 시간초과 -> 이분탐색으로 수정해야 함
-
 import sys
+
+# 이진 탐색
+def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+
+    while left <= right:
+        mid = (right + left) //2
+        if arr[mid] == target:
+            return 1
+        elif arr[mid] > target:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return 0
 
 n = int(sys.stdin.readline().strip())
 
-A = sys.stdin.readline().strip().split(" ")
+A = list(map(int, sys.stdin.readline().strip().split(" ")))
 
 # print(A)
 
 m = int(sys.stdin.readline().strip())
 
-M = sys.stdin.readline().strip().split(" ")
+M = list(map(int, sys.stdin.readline().strip().split(" ")))
+
+A.sort()
 
 for i in range(len(M)):
-    if M[i] in A:
-        print("1")
-    else:
-        print("0")
+    result = binary_search(A, M[i])
+    print(result)
