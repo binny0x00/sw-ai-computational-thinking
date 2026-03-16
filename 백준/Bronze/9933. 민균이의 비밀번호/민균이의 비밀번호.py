@@ -2,7 +2,7 @@ import sys
 
 n = int(sys.stdin.readline().strip())
 
-input_list = set([])
+input_list = set()
 
 for i in range(n):
     input_list.add(sys.stdin.readline().strip())
