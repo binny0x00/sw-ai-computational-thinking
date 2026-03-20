@@ -50,6 +50,7 @@ def bfs(graph, start):
     queue = deque()
     # 시작 노드를 큐에 넣음
     queue.append(start)
+    visited.append(start)
 
     # TODO: 큐가 빌 때까지 반복
     ## 큐에서 정점 꺼내기
@@ -57,11 +58,11 @@ def bfs(graph, start):
     ## 방문하지 않은 정점이면 큐에 추가
     while queue:
         target = queue.popleft()
-        if not target in visited:
-            visited.append(target)
+
         for i in graph[target]:
             if not i in visited:
                 queue.append(i)
+                visited.append(i)
 
     return visited
 
