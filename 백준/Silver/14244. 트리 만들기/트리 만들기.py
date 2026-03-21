@@ -8,7 +8,10 @@ graph = []
 for i in range(n-m):
     graph.append((0+i,i+1))
 
-last_parent_node = graph[-1][1]
+if graph:
+    last_parent_node = graph[-1][1]
+else:
+    last_parent_node = 0
 
 for j in range(1,m):
     graph.append((last_parent_node, last_parent_node+j))
