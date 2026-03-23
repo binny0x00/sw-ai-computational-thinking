@@ -1,6 +1,8 @@
 import sys
 from collections import deque
 
+sys.setrecursionlimit(10**6)
+
 # 노드의 개수
 n = int(sys.stdin.readline().strip())
 
