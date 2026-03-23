@@ -14,8 +14,10 @@ class Solution:
     result = []
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
         if root is not None:
+            # 1번 노드 추가
             if len(self.result) == 0:
                 self.result.append(float(root.val))
+            # 자식 노드 평균 리스트에 추가하기 (재귀)
             sum = 0
             count = 0
             if root.left is not None:
