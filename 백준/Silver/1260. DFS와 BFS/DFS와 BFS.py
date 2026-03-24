@@ -50,8 +50,8 @@ def bfs(v):
             if not visited_bfs[next_node]:
                 queue_bfs.append(next_node)
                 visited_bfs[next_node] = True
-    return " ".join(map(str,res_bfs))
+    return res_bfs
 
 dfs(v)
-print(" ".join(map(str,res_dfs)))
-print(bfs(v))
+print(*res_dfs)
+print(*bfs(v))
