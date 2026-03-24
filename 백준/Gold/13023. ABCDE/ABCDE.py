@@ -7,7 +7,7 @@ def solution():
     n,m = map(int, input().split())
 
     # 0~ a~와 매칭
-    graph = {index: [] for index in range(n)}
+    graph = [[] for _ in range(n)]
 
     for _ in range(m):
         name1, name2 = map(int, input().split())
