@@ -6,10 +6,9 @@ for _ in range(n):
     coins.append(int(sys.stdin.readline()))
 
 # 큰 순서대로 정렬
-coins = sorted(coins, reverse=True)
 total_count = 0
 
-for coin in coins:
+for coin in reversed(coins):
     count = k // coin
     total_count += count
     k %= coin
