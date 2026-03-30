@@ -1,11 +1,10 @@
 class Solution:
-    memo = {1:1, 2:2}
     def climbStairs(self, n: int) -> int:
-        # if n == 1:
-        #     return 1
-        # if n == 2:
-        #     return 2    #1+1, 2
-        if n in self.memo:
-            return self.memo[n]
-        self.memo[n] = self.climbStairs(n-1) + self.climbStairs(n-2)
-        return self.memo[n]
+        memo = {1:1, 2:2}
+
+        def dfs(x):
+            if x in memo:
+                return memo[x]
+            memo[x] = dfs(x-1) + dfs(x-2)
+            return memo[x]
+        return dfs(n)
