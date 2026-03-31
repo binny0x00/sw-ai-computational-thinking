@@ -37,7 +37,7 @@ def select_meetings(meetings):
         return 0
     
     # TODO: 종료 시간 기준으로 정렬
-    meetings = sorted(meetings, key=lambda x: x[1])
+    meetings = sorted(meetings, key=lambda x: (x[1], x[0]))
     
     selected = []
     
