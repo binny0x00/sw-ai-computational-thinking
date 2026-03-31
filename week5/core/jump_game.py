@@ -13,10 +13,9 @@ class Solution:
         max_distance = 0    # 가장 멀리 갈 수 있는 위치 기록
 
         for i in range(len(nums)):
-            if max_distance >= i:
-                if max_distance < i + nums[i]:
-                    max_distance = i + nums[i]
+            if i > max_distance:
+                return False
+            
+            max_distance = max(max_distance, i + nums[i])
         
-        if max_distance >= len(nums) - 1:
-            return True
-        else : return False
+        return True
